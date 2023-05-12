@@ -12,5 +12,5 @@ module "webservers_root" {
     location                = module.network_root.vnet_location
     rg_name                 = var.rg_name_root
     network_interface_ids   = [module.network_root.vnet_id]
-    environment = var.environment_root
+    environment             = var.environment_root
 }
