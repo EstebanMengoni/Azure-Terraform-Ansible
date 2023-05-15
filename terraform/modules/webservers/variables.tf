@@ -3,6 +3,11 @@ variable "vm_name" {
     type = string
 }
 
+variable "environment" {
+  description = "The name of the environment."
+  type = string
+}
+
 variable "location" {
     description = "The location of the network"
     type = string
@@ -14,6 +19,6 @@ variable "rg_name" {
 }
 
 variable "network_interface_ids" {
-    description = "The network ids"
+    description = "The network interface ids"
     type = list(string)
 }

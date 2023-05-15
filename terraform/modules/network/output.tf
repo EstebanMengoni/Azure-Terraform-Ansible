@@ -1,7 +1,7 @@
-output "subnet_id" {
-    value = module.network.vnet_id
+output "network_interface_ids" {
+    value = azurerm_network_interface.nic.id
 }
 
-output "network_location" {
-    value = module.network.vnet_location
+output "vnet_location" {
+    value = azurerm_resource_group.rg.location
 }

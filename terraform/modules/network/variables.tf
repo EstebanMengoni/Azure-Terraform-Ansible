@@ -3,6 +3,11 @@ variable "rg_name" {
   type = string
 }
 
+variable "vnet_name" {
+  description = "The name of the virtual network"
+  type = string
+}
+
 variable "environment" {
   description = "The name of the environment."
   type = string

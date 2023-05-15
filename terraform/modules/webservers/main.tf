@@ -1,34 +1,30 @@
-resource "azurerm_virtual_machine" "webservers" {
-  name                  = var.vm_name
-  location              = var.location
-  resource_group_name   = var.rg_name
-  network_interface_ids = var.network_interface_ids[0]
-  vm_size               = "Standard_DS1_v2"
+resource "tls_private_key" "webservers_ssh" {
+    algorithm = "RSA"
+    rsa_bits = 4096
+}
 
-  storage_image_reference {
+resource "azurerm_linux_virtual_machine" "webservers" {
+  name                  = var.vm_name
+  resource_group_name   = var.rg_name
+  location              = var.location
+  size                  = "Standard_D4s_v3"
+  admin_username        = "adminuser"
+  network_interface_ids = var.network_interface_ids
+
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = tls_private_key.webservers_ssh.public_key_openssh
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
     sku       = "16.04-LTS"
     version   = "latest"
-  }
-  storage_os_disk {
-    name              = "webserverdisk"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-  }
-  os_profile {
-    computer_name  = "hostname"
-    admin_username = "admin"
-    //admin_password = ""
-  }
-  os_profile_linux_config {
-    ssh_keys {
-      key_data = file("~/.ssh/id_rsa.pub")
-    }
-    disable_password_authentication = true
-  }
-  tags = {
-    environment = var.environment
   }
 }
