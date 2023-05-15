@@ -8,7 +8,7 @@ variable "rg_name_root" {
     type = string
 }
 
-variable "vm_name_root" {
+variable "vm_name" {
     description = "The name of the virtual machine"
     type = string
 }
