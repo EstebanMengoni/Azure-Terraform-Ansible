@@ -1,6 +1,6 @@
 resource "azurerm_private_dns_zone" "example" {
-  name                = "test.mysql.database.azure.com"
-  resource_group_name = var.rg_name
+  name                  = "esteban.mysql.database.azure.com"
+  resource_group_name   = var.rg_name
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "example" {
