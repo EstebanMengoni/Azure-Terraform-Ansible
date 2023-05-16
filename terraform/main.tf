@@ -25,3 +25,11 @@ module "database_root" {
     subnet_id               = module.network_root.database_subnet_id
     location                = module.network_root.vnet_location
 }
+
+module "loadbalancer_root" {
+    source = "./modules/loadbalancer"
+    
+    rg_name             = var.rg_name_root
+    location            = module.network_root.vnet_location
+    public_ip_address   = module.network_root.public_ip_address_id  
+}

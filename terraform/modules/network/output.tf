@@ -17,3 +17,7 @@ output "vnet_id" {
 output "database_subnet_id" {
     value = azurerm_subnet.database_subnet.id
 }
+
+output "public_ip_address_id" {
+    value = azurerm_public_ip.public_ip.id
+}

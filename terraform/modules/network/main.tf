@@ -34,6 +34,13 @@ resource "azurerm_subnet" "database_subnet" {
   }
 }
 
+resource "azurerm_public_ip" "public_ip" {
+  name                = "${var.vnet_name}-public_ip"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = var.rg_name
+  allocation_method   = "Static"
+}
+
 resource "azurerm_network_interface" "nic" {
   name                = "${var.vnet_name}-nic"
   location            = azurerm_resource_group.rg.location
