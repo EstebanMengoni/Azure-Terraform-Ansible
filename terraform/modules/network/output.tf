@@ -14,10 +14,18 @@ output "vnet_id" {
     value = azurerm_virtual_network.vnet.id
 }
 
+# output "load_balancer_subnet_id" {
+#     value = azurerm_subnet.webservers_subnet.id
+# }
+
+output "ip_configuration_name" {
+    value = azurerm_network_interface.nic.ip_configuration[0].name
+}
+
 output "database_subnet_id" {
     value = azurerm_subnet.database_subnet.id
 }
 
 output "public_ip_address_id" {
-    value = azurerm_public_ip.public_ip.id
+    value = azurerm_public_ip.loadbalancer_public_ip.id
 }

@@ -41,6 +41,13 @@ resource "azurerm_public_ip" "public_ip" {
   allocation_method   = "Static"
 }
 
+resource "azurerm_public_ip" "loadbalancer_public_ip" {
+  name                = "loadbalancer_public_ip"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = var.rg_name
+  allocation_method   = "Static"
+}
+
 resource "azurerm_network_interface" "nic" {
   name                = "${var.vnet_name}-nic"
   location            = azurerm_resource_group.rg.location
@@ -50,5 +57,6 @@ resource "azurerm_network_interface" "nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.webservers_subnet.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.public_ip.id 
   }
 }

@@ -3,6 +3,11 @@ resource "tls_private_key" "webservers_ssh" {
     rsa_bits = 4096
 }
 
+resource "local_file" "linuxkey" {
+    filename  = "webservers.pem"
+    content   = tls_private_key.webservers_ssh.private_key_pem
+}
+
 resource "azurerm_linux_virtual_machine" "webservers" {
   name                  = var.vm_name
   resource_group_name   = var.rg_name
@@ -27,4 +32,6 @@ resource "azurerm_linux_virtual_machine" "webservers" {
     sku       = "16.04-LTS"
     version   = "latest"
   }
+
+  depends_on = [ tls_private_key.webservers_ssh ]
 }
