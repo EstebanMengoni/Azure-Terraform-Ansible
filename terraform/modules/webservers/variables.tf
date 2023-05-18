@@ -18,7 +18,12 @@ variable "rg_name" {
     type = string
 }
 
-variable "network_interface_ids" {
-    description = "The network interface ids"
-    type = list(string)
+variable "subnet_id" {
+    description = "The subnet id"
+    type = string
+}
+
+variable "admin_ssh_key" {
+    description = "The ssh key"
+    type = string
 }

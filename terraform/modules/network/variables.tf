@@ -3,6 +3,11 @@ variable "rg_name" {
   type = string
 }
 
+variable "location" {
+  description = "The resource group location"
+  type = string
+} 
+
 variable "vnet_name" {
   description = "The name of the virtual network"
   type = string
