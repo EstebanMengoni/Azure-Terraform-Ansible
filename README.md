@@ -69,4 +69,4 @@ Ahora abriremos crontab y pegaremos el codigo anterior en el:
 ```
 crontab -e
 ```
-Y con esto termina el trabajo practico, muchas gracias!
+Y con esto termina el proyecto, muchas gracias!
