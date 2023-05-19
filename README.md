@@ -69,4 +69,7 @@ Ahora abriremos crontab y pegaremos el codigo anterior en el:
 ```
 crontab -e
 ```
-Y con esto termina el proyecto, muchas gracias!
+
+Friendly reminder: Si se quiere eliminar la infraestructura, siempre hacerlo con 'terraform destroy', nunca eliminarla desde el portal de Azure, ya que Terraform guarda el estado de la infra, si este difiere del estado del portal, puede llegar a generar problemas a la hora de querer aplicar otro apply o destroy.
+
+Fin del Proyecto, muchas gracias por haber llegado hasta aca!
