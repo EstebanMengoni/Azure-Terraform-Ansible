@@ -1,0 +1,13 @@
+- name: Instalar Apache2 y PHP en los webservers
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Actualizar paquetes del sistema
+      apt:
+        update_cache: yes
+
+    - name: Instalar Apache2 y PHP
+      apt:
+        name: [apache2,php]
+        state: present

@@ -14,7 +14,7 @@ resource "azurerm_mysql_flexible_server" "flexible_server" {
   name                   = var.flexible_server_name
   resource_group_name    = var.rg_name
   location               = var.location
-  administrator_login    = "psqladmin"
+  administrator_login    = "mysqladmin"
   administrator_password = "H@Sh1CoR3!"
   backup_retention_days  = 7
   delegated_subnet_id    = var.subnet_id

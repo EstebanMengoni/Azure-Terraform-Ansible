@@ -11,6 +11,10 @@ resource "tls_private_key" "webservers_ssh" {
 resource "local_file" "linuxkey" {
     filename  = "webservers.pem"
     content   = tls_private_key.webservers_ssh.private_key_pem
+
+    provisioner "local-exec" {
+      command = "chmod 400 webservers.pem"
+    }
 }
 
 module "network_root" {
@@ -26,7 +30,7 @@ module "network_root" {
 module "webserver1_root" {
     source = "./modules/webservers"
 
-    vm_name                 = "${azurerm_resource_group.rg.name}webserver1"
+    vm_name                 = "webserver1"
     rg_name                 = azurerm_resource_group.rg.name
     location                = azurerm_resource_group.rg.location
 
@@ -39,7 +43,7 @@ module "webserver1_root" {
 module "webserver2_root" {
     source = "./modules/webservers"
 
-    vm_name                 = "${azurerm_resource_group.rg.name}webserver2"
+    vm_name                 = "webserver2"
     rg_name                 = azurerm_resource_group.rg.name
     location                = azurerm_resource_group.rg.location
 
@@ -62,16 +66,16 @@ module "webserver2_root" {
 #     environment             = var.environment_root
 # }
 
-module "database_root" {
-     source = "./modules/database"
+# module "database_root" {
+#     source = "./modules/database"
 
-     rg_name                 = azurerm_resource_group.rg.name
-     flexible_server_name    = "${azurerm_resource_group.rg.name}flexibleserver"
-     location                = azurerm_resource_group.rg.location
+#     rg_name                 = azurerm_resource_group.rg.name
+#     flexible_server_name    = "${azurerm_resource_group.rg.name}flexibleserver"
+#     location                = azurerm_resource_group.rg.location
 
-     vnet_id                 = module.network_root.vnet_id
-     subnet_id               = module.network_root.database_subnet_id
- }
+#     vnet_id                 = module.network_root.vnet_id
+#     subnet_id               = module.network_root.database_subnet_id
+# }
 
 module "loadbalancer_root" {
     source = "./modules/loadbalancer"
@@ -82,8 +86,8 @@ module "loadbalancer_root" {
     public_ip_address       = module.network_root.public_ip_address_id
     virtual_network_id      = module.network_root.vnet_id
     webservers_ip_addresses = [
-        module.webserver1_root.ip_address,
-        module.webserver2_root.ip_address
+        module.webserver1_root.private_ip_address,
+        module.webserver2_root.private_ip_address
         # module.webserver3_root.ip_address
     ]
 }
