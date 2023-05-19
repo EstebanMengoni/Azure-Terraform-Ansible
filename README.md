@@ -34,9 +34,21 @@ terraform init
 ```
 terraform apply
 ```
-  
-Una vez finalizado el deploy de la infraestructura, deberiamos de tener en nuestra cuenta de azure un grupo de recursos con el nombre que elegimos y todos sus recursos:
+Bien, ya tenemos la infraestructura, tendriamos que tener en nuestro portal de Azure un grupo de recursos con el nombre que elegimos y todos sus recursos:
 
+Portal de Azure: https://portal.azure.com/#home
 
+  ![](./images/recursos_azure.png)
   
+# Ansible
+  
+Ahora es el turno de Ansible, una vez creada la infraestructura, debemos entrar en los webservers desde nuestro portal de Azure y buscar la ip publica de estos. Con la ip publica lo que haremos sera pegarla en el archivo llamado 'inventory.ini' en el apartado de webservers, todas las ips publicas de nuestros webservers, una abajo de la otra.
+> Esto se intento automatizar, pero no se encontro la forma, tambien se intento agilizar con el output de Terraform, pero por alguna razon el output la primera vez que se ejecuta terraform apply devuelve una cadena vacia, por lo tanto se tuvo que optar por esta opcion.
+  
+Una vez hecho esto parados en la carpeta del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
+
+```
+ansible-playbook -i inventory.ini playbook.yml
+```
+
 
