@@ -54,5 +54,13 @@ Una vez hecho esto parados en la carpeta del repositorio, procederemos a instala
 ```
 ansible-playbook -i inventory.ini playbook.yml
 ```
+Y listo! Una vez hecho esto vamos a tener en nuestros webservers instalados Apache2 y PHP, ahora solo faltaria una tarea programada que ejecute el playbook para mantener actualizado el Apache2 y el PHP, para eso deberas pegar el siguiente codigo en tu crontab si gustas.
 
+```
+0 3 * * * cd /ruta/a/la/carpeta && ansible-playbook playbook.yml
+```
+Ahora abriremos crontab:
+```
+crontab -e
+```
 
