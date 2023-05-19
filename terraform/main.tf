@@ -49,29 +49,29 @@ module "webserver2_root" {
     environment             = var.environment_root
 }
 
-module "webserver3_root" {
-    source = "./modules/webservers"
+# module "webserver3_root" {
+#     source = "./modules/webservers"
 
-    vm_name                 = "${azurerm_resource_group.rg.name}webserver3"
-    rg_name                 = azurerm_resource_group.rg.name
-    location                = azurerm_resource_group.rg.location
+#     vm_name                 = "${azurerm_resource_group.rg.name}webserver3"
+#     rg_name                 = azurerm_resource_group.rg.name
+#     location                = azurerm_resource_group.rg.location
 
-    subnet_id               = module.network_root.webservers_subnet_id
-    admin_ssh_key           = tls_private_key.webservers_ssh.public_key_openssh
+#     subnet_id               = module.network_root.webservers_subnet_id
+#     admin_ssh_key           = tls_private_key.webservers_ssh.public_key_openssh
 
-    environment             = var.environment_root
-}
+#     environment             = var.environment_root
+# }
 
-module "database_root" {
-    source = "./modules/database"
+# module "database_root" {
+#     source = "./modules/database"
 
-    rg_name                 = azurerm_resource_group.rg.name
-    flexible_server_name    = "${azurerm_resource_group.rg.name}flexibleserver"
-    location                = azurerm_resource_group.rg.location
+#     rg_name                 = azurerm_resource_group.rg.name
+#     flexible_server_name    = "${azurerm_resource_group.rg.name}flexibleserver"
+#     location                = azurerm_resource_group.rg.location
 
-    vnet_id                 = module.network_root.vnet_id
-    subnet_id               = module.network_root.database_subnet_id
-}
+#     vnet_id                 = module.network_root.vnet_id
+#     subnet_id               = module.network_root.database_subnet_id
+# }
 
 module "loadbalancer_root" {
     source = "./modules/loadbalancer"
@@ -83,7 +83,7 @@ module "loadbalancer_root" {
     virtual_network_id      = module.network_root.vnet_id
     webservers_ip_addresses = [
         module.webserver1_root.ip_address,
-        module.webserver2_root.ip_address,
-        module.webserver3_root.ip_address
+        module.webserver2_root.ip_address
+        # module.webserver3_root.ip_address
     ]
 }
