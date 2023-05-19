@@ -3,5 +3,7 @@ Proyecto del BootCamp Devops, en el cual se pide crear una infraestructura media
                                            # Diagrama de la arquitectura
 <p>
 <p align="center">
+  
   ![](./images/infra_azure.png)
+  
 <p>
