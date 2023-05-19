@@ -57,6 +57,7 @@ ansible-playbook -i inventory.ini playbook.yml
   
 
 Y listo! Una vez hecho esto vamos a tener en nuestros webservers instalados Apache2 y PHP, para ver los resultados tienes que ir a tu portal de Azure, ingresar al loadbalancer, ingresar el frontend ip y pegar la ip en tu buscador.
+  
   ![](./images/loadbalancer.png)
   ![](./images/frontend_ip.png)
 
