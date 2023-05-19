@@ -49,6 +49,11 @@ Ahora es el turno de Ansible, una vez creada la infraestructura, el output de Te
   
   ![](./images/inventory.png)
   
+Si no para ver la ip desde el output de Terraform de nuevo, podes utilizar el siguiente comando:
+```  
+terraform output
+```
+  
 Una vez hecho esto parados en la carpeta del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
 
 ```
