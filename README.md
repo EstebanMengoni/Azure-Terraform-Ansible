@@ -54,13 +54,19 @@ Una vez hecho esto parados en la carpeta del repositorio, procederemos a instala
 ```
 ansible-playbook -i inventory.ini playbook.yml
 ```
-Y listo! Una vez hecho esto vamos a tener en nuestros webservers instalados Apache2 y PHP, ahora solo faltaria una tarea programada que ejecute el playbook para mantener actualizado el Apache2 y el PHP, para eso deberas pegar el siguiente codigo en tu crontab si gustas.
+  
+
+Y listo! Una vez hecho esto vamos a tener en nuestros webservers instalados Apache2 y PHP, para ver los resultados tienes que ir a tu portal de Azure, ingresar al loadbalancer, ingresar el frontend ip y pegar la ip en tu buscador.
+  ![](./images/loadbalancer.png)
+  ![](./images/frontend_ip.png)
+
+Ahora solo faltaria una tarea programada que ejecute el playbook para mantener actualizado el Apache2 y el PHP, para eso deberas pegar el siguiente codigo en tu crontab si gustas.
 
 ```
 0 3 * * * cd /ruta/a/la/carpeta && ansible-playbook playbook.yml
 ```
-Ahora abriremos crontab:
+Ahora abriremos crontab y pegaremos el codigo anterior en el:
 ```
 crontab -e
 ```
-
+Y con esto termina el trabajo practico, muchas gracias!
