@@ -66,16 +66,16 @@ module "webserver2_root" {
 #     environment             = var.environment_root
 # }
 
-# module "database_root" {
-#     source = "./modules/database"
+module "database_root" {
+    source = "./modules/database"
 
-#     rg_name                 = azurerm_resource_group.rg.name
-#     flexible_server_name    = "${azurerm_resource_group.rg.name}flexibleserver"
-#     location                = azurerm_resource_group.rg.location
+    rg_name                 = azurerm_resource_group.rg.name
+    flexible_server_name    = "${azurerm_resource_group.rg.name}flexibleserver"
+    location                = azurerm_resource_group.rg.location
 
-#     vnet_id                 = module.network_root.vnet_id
-#     subnet_id               = module.network_root.database_subnet_id
-# }
+    vnet_id                 = module.network_root.vnet_id
+    subnet_id               = module.network_root.database_subnet_id
+}
 
 module "loadbalancer_root" {
     source = "./modules/loadbalancer"
