@@ -54,7 +54,7 @@ Si no para ver la ip desde el output de Terraform de nuevo, podes utilizar el si
 terraform output
 ```
   
-Una vez hecho esto parados en la carpeta del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
+Una vez hecho esto, parados en la carpeta del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
 
 ```
 ansible-playbook -i inventory.ini playbook.yml
