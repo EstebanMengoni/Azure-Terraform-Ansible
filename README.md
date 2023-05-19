@@ -45,7 +45,7 @@ Portal de Azure: https://portal.azure.com/#home
 Ahora es el turno de Ansible, una vez creada la infraestructura, debemos entrar en los webservers desde nuestro portal de Azure y buscar la ip publica de estos. Con la ip publica lo que haremos sera pegarla en el archivo llamado 'inventory.ini' en el apartado de webservers, todas las ips publicas de nuestros webservers, una abajo de la otra.
 > Esto se intento automatizar, pero no se encontro la forma, tambien se intento agilizar con el output de Terraform, pero por alguna razon el output la primera vez que se ejecuta terraform apply devuelve una cadena vacia, por lo tanto se tuvo que optar por esta opcion.
   
-
+  ![](./images/ip_publica.png)
   
   ![](./images/inventory.png)
   
