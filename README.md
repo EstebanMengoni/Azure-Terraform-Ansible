@@ -64,7 +64,7 @@ Y listo! Una vez hecho esto vamos a tener en nuestros webservers instalados Apac
 Ahora solo faltaria una tarea programada que ejecute el playbook para mantener actualizado el Apache2 y el PHP, para eso deberas pegar el siguiente codigo en tu crontab si gustas.
 
 ```
-0 3 * * * cd /ruta/a/la/carpeta && ansible-playbook playbook.yml
+0 3 * * * cd /ruta/a/la/carpeta/del/repositorio && ansible-playbook -i inventory.ini playbook.yml
 ```
 Ahora abriremos crontab y pegaremos el codigo anterior en el:
 ```
