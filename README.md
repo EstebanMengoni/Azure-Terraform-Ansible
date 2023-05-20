@@ -43,16 +43,9 @@ Portal de Azure: https://portal.azure.com/#home
   
 # Ansible
   
-Ahora es el turno de Ansible, una vez creada la infraestructura, el output de Terraform nos dara las ip publicas que necesitamos para que Asible se conecte, tambien podrias entrar en los webservers desde el portal de Azure y buscar la ip publica de estos. Con la ip publica lo que haremos sera pegarla en el archivo llamado `inventory.ini` en el apartado de webservers, todas las ips publicas de nuestros webservers, una abajo de la otra.
-> Esto se intento automatizar, pero no se encontro la forma, que no sea con jenkins.
-  
-  ![](./images/ip_publica.png)
-  
-  ![](./images/inventory.png)
-  
-Si no para ver la ip desde el output de Terraform de nuevo, podes utilizar el siguiente comando:
+Ahora es el turno de Ansible, una vez creada la infraestructura, se correra el siguiente comando para agregar las ips al `inventory.ini`, asi Ansible va a poder conectarse a nuestros webservers y proceder a ejecutar las distintas tareas.
 ```  
-terraform output
+(terraform output | awk '{print$3}' | sed 's/"//g' && cat inventory.ini) > ips.txt && mv ips.txt inventory.ini 
 ```
   
 Una vez hecho esto, parados en la carpeta del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
