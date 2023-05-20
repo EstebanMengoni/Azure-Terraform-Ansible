@@ -26,7 +26,7 @@ Una vez instalados procederemos a loguearnos en azure usando:
 az login
 ```
   
-Ya logueados en nuestra cuenta nos posicionaremos en la carpeta del repositorio, para despues ejecutar el siguientes comandos:
+Ya logueados en nuestra cuenta nos posicionaremos en la carpeta terraform del repositorio, para despues ejecutar el siguientes comandos:
 > El tercer webserver esta comentado ya que se necesita una suscripcion que permita mas ips publicas, como free trial no lo permite, el 3er webserver esta comentado, si lo queres usar, tenes que descomentar el modulo en el main.tf y su ip publica en la pool del loadbalancer, todo esto antes de usar los comandos.
   
 ```
@@ -48,7 +48,7 @@ Ahora es el turno de Ansible, una vez creada la infraestructura, se correra el s
 (terraform output | awk '{print$3}' | sed 's/"//g' | sed '1i [webservers]' && cat ../ansible/inventory.ini) > ips.txt && mv ips.txt ../ansible/inventory.ini 
 ```
   
-Una vez hecho esto, parados en la carpeta del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
+Una vez hecho esto, nos moveremos a la carpeta ansible del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
 
 ```
 ansible-playbook -i inventory.ini playbook.yml
