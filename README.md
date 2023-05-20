@@ -45,7 +45,7 @@ Portal de Azure: https://portal.azure.com/#home
   
 Ahora es el turno de Ansible, una vez creada la infraestructura, se correra el siguiente comando para agregar las ips al `inventory.ini`, asi Ansible va a poder conectarse a nuestros webservers y proceder a ejecutar las distintas tareas.
 ```  
-(terraform output | awk '{print$3}' | sed 's/"//g' | sed '1i [webservers]' && cat inventory.ini) > ips.txt && mv ips.txt inventory.ini 
+(terraform output | awk '{print$3}' | sed 's/"//g' | sed '1i [webservers]' && cat ../ansible/inventory.ini) > ips.txt && mv ips.txt ../ansible/inventory.ini 
 ```
   
 Una vez hecho esto, parados en la carpeta del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
