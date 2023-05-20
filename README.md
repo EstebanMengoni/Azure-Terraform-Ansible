@@ -28,7 +28,10 @@ az login
   
 Ya logueados en nuestra cuenta nos posicionaremos en la carpeta terraform del repositorio, para despues ejecutar el siguientes comandos:
 > El tercer webserver esta comentado ya que se necesita una suscripcion que permita mas ips publicas, como free trial no lo permite, el 3er webserver esta comentado, si lo queres usar, tenes que descomentar el modulo en el main.tf y su ip publica en la pool del loadbalancer, todo esto antes de usar los comandos.
-  
+
+```
+cd /ruta/a/la/carpeta/del/repositorio/terraform
+```
 ```
 terraform init
 ```
@@ -50,6 +53,9 @@ Ahora es el turno de Ansible, una vez creada la infraestructura, se correra el s
   
 Una vez hecho esto, nos moveremos a la carpeta ansible del repositorio, procederemos a instalar Apache2 y PHP en nuestros webservers, para eso utilizaremos el siguiente comando de Ansible:
 
+```
+cd ../ansible
+```
 ```
 ansible-playbook -i inventory.ini playbook.yml
 ```
