@@ -60,14 +60,13 @@ Y listo! Una vez hecho esto vamos a tener en nuestros webservers instalados Apac
   ![](./images/loadbalancer.png)
   ![](./images/frontend_ip.png)
 
-Ahora solo faltaria una tarea programada que ejecute el playbook para mantener actualizado el Apache2 y el PHP, para eso deberas pegar el siguiente codigo en tu crontab si gustas.
-
-```
-0 3 * * * cd /ruta/a/la/carpeta/del/repositorio && ansible-playbook -i inventory.ini playbook.yml
-```
-Ahora abriremos crontab y pegaremos el codigo anterior en el:
+Ahora solo faltaria una tarea programada que ejecute el playbook para mantener actualizado el Apache2 y el PHP, para eso abrimos crontab:
 ```
 crontab -e
+```
+Y pegamos el sieguiente codigo en la ultima linea:
+```
+0 3 * * * cd /ruta/a/la/carpeta/del/repositorio && ansible-playbook -i inventory.ini playbook.yml
 ```
 
 Friendly reminder: Si se quiere eliminar la infraestructura, siempre hacerlo con `terraform destroy`, nunca eliminarla desde el portal de Azure, ya que Terraform guarda el estado de la infra, si este difiere del estado del portal, puede llegar a generar problemas a la hora de querer aplicar otro apply o destroy.
