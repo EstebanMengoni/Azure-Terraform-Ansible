@@ -1,5 +1,5 @@
 resource "azurerm_private_dns_zone" "example" {
-  name                  = "esteban.mysql.database.azure.com"
+  name                  = "webservers.mysql.database.azure.com"
   resource_group_name   = var.rg_name
 }
 
